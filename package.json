@@ -2,6 +2,10 @@
   "name": "koaapi",
   "version": "1.0.0",
   "description": "koa2 api",
+  "engines": {
+    "node": ">=8.6",
+    "yarn": ">=1.6"
+  },
   "main": "index.js",
   "directories": {
     "lib": "lib"
@@ -30,6 +34,7 @@
     "nodemon": "^1.18.4"
   },
   "scripts": {
+    "start": "node lib/index.js",
     "dev": ". local/dev-env.sh && nodemon lib/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
