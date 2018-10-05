@@ -13,12 +13,14 @@
   "dependencies": {
     "@koa/cors": "^2.2.2",
     "bcryptjs": "^2.4.3",
+    "co-body": "^6.0.0",
     "config": "^2.0.1",
     "joi-objectid": "^2.0.0",
     "jsonwebtoken": "^8.3.0",
     "koa": "^2.5.3",
     "koa-bodyparser": "^4.2.1",
     "koa-bunyan-logger": "^2.1.0",
+    "koa-exception": "^1.0.6",
     "koa-joi-router": "^5.1.0",
     "koa-jwt": "^3.5.1",
     "koa-qs": "^2.0.0",
@@ -36,7 +38,7 @@
     "nodemon": "^1.18.4"
   },
   "scripts": {
-    "start": "node lib/index.js",
+    "start": ". local/dev-env.sh && node lib/index.js",
     "dev": ". local/dev-env.sh && nodemon lib/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

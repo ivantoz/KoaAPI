@@ -34,6 +34,7 @@ module.exports = {
     await newUser.save();
     console.info(`user with id=${newUser._id} is saved`);
     ctx.user = newUser;
-    ctx.body = newUser.sanitize(ctx.state);
+    ctx.body = newUser.sanitize(newUserTosave);
+    ctx.status = 201;
   },
 };

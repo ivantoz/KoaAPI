@@ -3,7 +3,7 @@ module.exports = {
     httpsEnabled: false,
   },
   mongo: {
-    uri: 'mongodb://localhost/authentication',
+    uri: 'mongodb://localhost/techskills',
     debug: true,
   },
   jwt: {
