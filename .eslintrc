@@ -1,0 +1,16 @@
+{
+  "extends": "airbnb-base",
+  "env": {
+    "node": true,
+  },
+  "rules": {
+    "curly": ["error", "all"],
+    "brace-style": ["error", "1tbs", { "allowSingleLine": false }],
+    "max-len": "off",
+    "no-underscore-dangle": "off",
+    "no-warning-comments": "warn",
+    "prefer-arrow-callback": "off",
+    "consistent-return": "off",
+    "operator-linebreak": "error"
+  }
+}
