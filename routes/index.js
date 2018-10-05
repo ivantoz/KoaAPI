@@ -1,18 +1,18 @@
 const router = require('koa-joi-router');
 const usersRoutes = require('./users');
-const fellowssRoutes = require('./fellows');
+const fellowsRoutes = require('./fellows');
 
 const users = router();
 users.prefix('/users');
 users.route(usersRoutes);
 
-// const fellows = router();
-// roles.prefix('/fellows');
-// roles.route(fellowssRoutes);
+const fellows = router();
+fellows.prefix('/fellows');
+fellows.route(fellowsRoutes);
 
 const routes = {
   users,
-  // fellows,
+  fellows,
 };
 
 module.exports = routes;

@@ -56,4 +56,14 @@ fellowSchema.index(
 );
 
 
+fellowSchema.methods.updateFellow = function updateFellow(email, fellowUpdates, defaultFellowValues = {}) {
+  const fellow = this.fellow.find(fel => fel.email === email);
+  if (fellow) {
+    fellow.set(fellowUpdates);
+  } else {
+    this.fellow.push({ email, ...defaultFellowValues, ...fellowUpdates });
+  }
+};
+
+
 module.exports = fellowSchema;

@@ -24,7 +24,7 @@ module.exports = {
       .findOne({ email: newUserTosave.email })
       .exec();
 
-    ctx.assert(userAccount, 409, `${newUserTosave.email} already registered`);
+    ctx.assert(userAccount, 400, `${newUserTosave.email} already registered`);
     newUserTosave.docinfo = {
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
