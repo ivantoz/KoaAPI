@@ -15,6 +15,8 @@ module.exports = {
     connectionOptions: {
       user: process.env.MONGO_USERNAME,
       pass: process.env.MONGO_PASSWORD,
+      useCreateIndex: true,
+      useNewUrlParser: true,
       mongos,
     },
   },

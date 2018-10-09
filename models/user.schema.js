@@ -5,7 +5,14 @@ const _ = require('lodash');
 const { Schema } = mongoose;
 
 const schemaOptions = {
+  timestamps: true,
   strict: false,
+  toObject: {
+    virtuals: true,
+  },
+  toJSON: {
+    virtuals: true,
+  },
 };
 
 
@@ -14,15 +21,6 @@ const userNameSchema = new Schema({
   last: { type: String, required: true },
 }, {
   _id: false,
-});
-
-const docinfoSchema = new Schema({
-  createdAt: {
-    type: Date,
-  },
-  updatedAt: {
-    type: Date,
-  },
 });
 
 const userSchema = new Schema({
@@ -36,22 +34,11 @@ const userSchema = new Schema({
       unique: true,
     },
   },
-  docinfo: {
-    type: docinfoSchema,
-  },
 }, schemaOptions);
 
 
 userSchema.pre('save', function preSave(next) {
   const user = this;
-  const now = new Date().toISOString();
-
-  user.set('docinfo.updatedAt', now);
-
-  // save createdAt once
-  if (!this.get('docinfo.createdAt')) {
-    user.set('docinfo.createdAt', now);
-  }
 
   if (!user.isModified('password')) {
     return next();
@@ -121,7 +108,8 @@ userSchema.static('sanitize', async function sanitize(userDoc) {
     'email',
     'name',
     'position',
-    'docinfo',
+    'createdAt',
+    'updatedAt',
   ];
   return _.pick(user, fieldsToPick);
 });

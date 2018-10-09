@@ -7,7 +7,7 @@ module.exports = {
   validate: {
     type: 'json',
     body: {
-      email: Joi.string().required(),
+      email: Joi.string().lowercase().email().required(),
       password: Joi.string().required(),
       name: Joi.object({
         first: Joi.string().required(),
@@ -16,7 +16,7 @@ module.exports = {
       position: Joi.string().required(),
     },
   },
-  handler: async (ctx) => {
+  handler: [async (ctx) => {
     const newUserTosave = ctx.request.body;
     const { User } = ctx.models;
 
@@ -24,17 +24,15 @@ module.exports = {
       .findOne({ email: newUserTosave.email })
       .exec();
 
-    ctx.assert(userAccount, 400, `${newUserTosave.email} already registered`);
-    newUserTosave.docinfo = {
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    };
+    if (userAccount) {
+      ctx.throw(400, `${newUserTosave.email} already registered`);
+    }
 
     const newUser = new User(newUserTosave);
     await newUser.save();
     console.info(`user with id=${newUser._id} is saved`);
-    ctx.user = newUser;
-    ctx.body = newUser.sanitize(newUserTosave);
+    ctx.body = await User.sanitize(newUser);
     ctx.status = 201;
   },
+  ],
 };

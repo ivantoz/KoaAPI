@@ -5,15 +5,15 @@ Joi.objectId = require('joi-objectid')(Joi);
 
 const removeFellowHandler = async (ctx, next) => {
   const { Fellow } = ctx.models;
-  const { fellowId } = ctx.request.params;
+  const { id } = ctx.request.params;
 
-  const user = await Fellow.findById(fellowId);
-  ctx.assert(user, 404, 'fellow not found');
+  const fellow = await Fellow.findById(id);
+  ctx.assert(fellow, 404, 'fellow not found');
 
-  user.findByIdAndRemove(fellowId)
+  await Fellow.findOneAndRemove({ _id: id })
     .catch((error) => {
       console.error(error);
-      ctx.throw(400, `Failed to delete fellow with id: ${fellowId}`);
+      ctx.throw(400, `Failed to delete fellow with id: ${id}`);
     });
   ctx.status = 204;
 
@@ -22,7 +22,7 @@ const removeFellowHandler = async (ctx, next) => {
 
 module.exports = {
   method: 'delete',
-  path: '/:fellowId/entitlements',
+  path: '/:id/fellow',
   validate: {
     params: {
       fellowId: Joi.objectId(),

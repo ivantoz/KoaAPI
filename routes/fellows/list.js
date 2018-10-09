@@ -28,7 +28,7 @@ module.exports = {
       fields, limit, skip, filter, search,
     } = ctx.request.query;
     let { sort } = ctx.request.query;
-    const searchQuery = createFilterQuery({filter});
+    const searchQuery = createFilterQuery({ filter });
     const select = {};
 
     if (search) {

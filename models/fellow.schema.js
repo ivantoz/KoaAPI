@@ -17,6 +17,9 @@ const docinfoSchema = new Schema({
   updatedBy: {
     type: String,
   },
+},
+{
+  _id: false,
 });
 
 const fellowNameSchema = new Schema({
@@ -44,7 +47,6 @@ const fellowSchema = new Schema({
     type: docinfoSchema,
   },
 }, {
-  timestamps: true,
   toObject: { virtuals: true },
   toJSON: { virtuals: true },
 });
@@ -54,16 +56,6 @@ fellowSchema.index(
     email: 'text',
   },
 );
-
-
-fellowSchema.methods.updateFellow = function updateFellow(email, fellowUpdates, defaultFellowValues = {}) {
-  const fellow = this.fellow.find(fel => fel.email === email);
-  if (fellow) {
-    fellow.set(fellowUpdates);
-  } else {
-    this.fellow.push({ email, ...defaultFellowValues, ...fellowUpdates });
-  }
-};
 
 
 module.exports = fellowSchema;

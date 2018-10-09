@@ -1,10 +1,10 @@
 const { Joi } = require('koa-joi-router');
 Joi.objectId = require('joi-objectid')(Joi);
-
+const objectToDotNotation = require('../../lib/objectToDotNotation');
 
 module.exports = {
   method: 'patch',
-  path: '/:fellowEmail',
+  path: '/:id',
   validate: {
     type: 'json',
     params: {
@@ -12,32 +12,28 @@ module.exports = {
     },
     body: Joi.object({
       _id: Joi.forbidden(),
-      email: Joi.string(),
-      cohortName: Joi.string(),
-      name: Joi.object({
-        first: Joi.string(),
-        middle: Joi.string(),
-        last: Joi.string(),
-      }),
-      dLevel: Joi.string(),
-    }),
+    }).unknown(),
   },
   handler: [
     async (ctx) => {
       const { Fellow } = ctx.models;
-      const { id, fellowEmail } = ctx.request.params;
+      const { id } = ctx.request.params;
       const fellowUpdates = ctx.request.body;
-      const { userId } = ctx.state.jwt;
-
-      const fellow = await Fellow.findById(id);
-      ctx.assert(fellow, 404, 'fellow not found');
+      const { _id } = ctx.state.jwt;
 
       fellowUpdates.docinfo = {
         updatedAt: new Date().toISOString(),
-        updatedBy: userId,
+        updatedBy: _id,
       };
-      fellow.updateFellow(fellowEmail, fellowUpdates);
-      const updatedFellow = await fellow.save();
+
+      const fellow = await objectToDotNotation(fellowUpdates);
+      const updatedFellow = await Fellow.findOneAndUpdate({ _id: id }, { $set: fellow }, { new: true })
+        .catch((error) => {
+          console.error(error);
+          ctx.throw(400, `Failed to update fellow with id: ${id}`);
+        });
+      ctx.assert(updatedFellow, 404, 'fellow not found');
+
       ctx.body = updatedFellow;
       ctx.status = 200;
     },
