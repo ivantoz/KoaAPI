@@ -3,7 +3,7 @@ const usersRoutes = require('./users');
 const fellowsRoutes = require('./fellows');
 
 const users = router();
-users.prefix('/users');
+users.prefix('/');
 users.route(usersRoutes);
 
 const fellows = router();

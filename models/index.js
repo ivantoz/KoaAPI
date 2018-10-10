@@ -27,7 +27,9 @@ mongoose.connection.on('open', (err) => {
 
 const applyMigrations = async () => Promise.resolve();
 
-mongoose.set('debug', true);
+if (config.get('app.loggingEnabled')) {
+  mongoose.set('debug', true);
+}
 
 
 const models = {

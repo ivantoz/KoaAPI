@@ -2,7 +2,7 @@ const { Joi } = require('koa-joi-router');
 
 module.exports = {
   method: 'post',
-  path: '/',
+  path: '/register-fellow',
   validate: {
     type: 'json',
     body: Joi.object({

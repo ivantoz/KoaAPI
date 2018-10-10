@@ -26,3 +26,15 @@ server-side (not for local use):
 npm start
 ```
 
+to run lint check:
+```bash
+npm run lint
+```
+
+## api
+[see here](docs/API.md)
+
+## license
+unlicensed
+
+all code © 2018 Ivan
