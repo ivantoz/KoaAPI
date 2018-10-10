@@ -242,6 +242,7 @@ Endpoint for  user accounts, authentication, and authorization
 | updatedBy | string |  | No |
 | createdAt | Date(ISO String) |  | No |
 | updatedAt | Date(ISO String) |  | No |
+
 <a name="fellownew"></a>**fellow-new**
 
 | Name | Type | Description | Required |
