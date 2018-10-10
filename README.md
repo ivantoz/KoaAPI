@@ -32,7 +32,7 @@ npm run lint
 ```
 
 ## api
-[see here](docs/API.md)
+[see here](doc/API.md)
 
 ## license
 unlicensed
