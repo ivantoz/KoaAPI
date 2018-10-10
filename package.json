@@ -24,13 +24,13 @@
     "koa-exception": "^1.0.6",
     "koa-joi-router": "^5.1.0",
     "koa-jwt": "^3.5.1",
-    "koa-qs": "^2.0.0",
     "koa-response-handler": "^2.1.0",
     "koa-router": "^7.4.0",
     "lodash": "^4.17.11",
     "map-obj": "^3.0.0",
     "moment": "^2.22.2",
     "mongoose": "^5.3.1",
+    "qs": "^6.5.2",
     "require-directory": "^2.1.1",
     "uuid": "^3.3.2"
   },
@@ -43,7 +43,8 @@
   "scripts": {
     "start": ". local/dev-env.sh && node lib/index.js",
     "dev": ". local/dev-env.sh && DEBUG=koa* nodemon lib/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "./node_modules/.bin/eslint `git ls-files | grep '\\.js$' --color=never`"
   },
   "keywords": [
     "koa",

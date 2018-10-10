@@ -1,4 +1,3 @@
-const _ = require('lodash');
 const { Joi } = require('koa-joi-router');
 
 module.exports = {

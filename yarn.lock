@@ -1994,13 +1994,6 @@ koa-jwt@^3.5.1:
     koa-unless "1.0.7"
     p-any "1.1.0"
 
-koa-qs@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/koa-qs/-/koa-qs-2.0.0.tgz#18d16b43508a541f092e514351dc09563a48819f"
-  dependencies:
-    merge-descriptors "~0.0.2"
-    qs "~2.3.3"
-
 koa-response-handler@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/koa-response-handler/-/koa-response-handler-2.1.0.tgz#96a7af096d473eee46bd0963e1047a8cd84606f9"
@@ -2183,10 +2176,6 @@ media-typer@0.3.0:
 memory-pager@^1.0.2:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/memory-pager/-/memory-pager-1.1.0.tgz#9308915e0e972849fefbae6f8bc95d6b350e7344"
-
-merge-descriptors@~0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/merge-descriptors/-/merge-descriptors-0.0.2.tgz#c36a52a781437513c57275f39dd9d317514ac8c7"
 
 methods@1.1.2, methods@^1.0.1:
   version "1.1.2"
@@ -2768,10 +2757,6 @@ punycode@^2.1.0:
 qs@^6.4.0, qs@^6.5.2:
   version "6.5.2"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
-
-qs@~2.3.3:
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-2.3.3.tgz#e9e85adbe75da0bbe4c8e0476a086290f863b404"
 
 raw-body@^2.2.0, raw-body@^2.3.3:
   version "2.3.3"

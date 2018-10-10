@@ -1,4 +1,3 @@
-const _ = require('lodash');
 const { Joi } = require('koa-joi-router');
 Joi.objectId = require('joi-objectid')(Joi);
 
